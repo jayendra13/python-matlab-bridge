@@ -56,6 +56,7 @@ except ImportError:
     class spmatrix:
         pass
 
+MATLAB_DIR = os.path.join(os.environ['CCI_BASE'],'Modelling','code','matlab')
 
 def encode_ndarray(obj):
     """Write a numpy array and its shape to base64 buffers"""
@@ -347,6 +348,7 @@ class Matlab(_Session):
            Command line options to pass to MATLAB. Optional; sensible defaults
            are used if this is not provided.
         """
+        os.chdir(MATLAB_DIR)
         if platform is None:
             platform = sys.platform
         if startup_options is None:
